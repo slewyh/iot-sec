@@ -1,0 +1,67 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+\usepackage{filecontents}
+\begin{filecontents*}{testing.bib}
+@ARTICLE{893287, 
+author={}, 
+journal={IEEE Std. 1516-2000}, 
+title={{IEEE Standard for Modeling and Simulation {(M\&S)} High Level Architecture {(HLA)} - Framework and Rules}}, 
+year={2000}, 
+volume={}, 
+pages={i -22}, 
+doi={10.1109/IEEESTD.2000.92296}, 
+}
+\end{filecontents*}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{CS6282: Statement of Work} \hfill  \\
+\normalsize Spring 2019 \hfill Teammates: Stephanie Lew, Zhang JiYi \\
+Prof. Jun Han \hfill  Date: XX/02/19 \\
+
+
+\section*{Introduction/Background}
+Put your Problem statement here! Example of a Citation\cite{7867716}. See \cite{893287} for more info.
+\section*{Objectives}
+\lipsum[2]
+
+\section*{Scope of Work}
+\lipsum[3]
+
+\section*{Proposed Milestones}
+\lipsum[4]
+% to comment sections out, use the command \ifx and \fi. Use this technique when writing your pre lab. For example, to comment something out I would do:
+%  \ifx
+%	\begin{itemize}
+%		\item item1
+%		\item item2
+%	\end{itemize}	
+%  \fi
+
+\section*{Attachments}
+%Make sure to change these
+Lab Notes, HelloWorld.ic, FooBar.ic
+%\fi %comment me out
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,testing}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
