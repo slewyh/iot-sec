@@ -3,39 +3,65 @@
 \usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
 \usepackage{fullpage} % changes the margin
 \usepackage{float}
+\usepackage{hyperref}
 
 \begin{document}
 \noindent
 \large\textbf{CS6282: Statement of Work} \hfill  \\
-\normalsize Spring 2019 \hfill Teammates: Stephanie Lew, Zhang Jiyi \\
-Prof. Jun Han \hfill  Date: 08/03/19 \\
+\normalsize 8 Mar 2019 %\hfill Teammates: Stephanie Lew, Zhang Jiyi \\
+%Prof. Jun Han \hfill  Date: 08/03/19 \\
+\\\\
+\begin{center}\begin{huge} Multimodal Continuous Authentication \end{huge}\end{center}
+\begin{center}Stephanie Lew, Zhang Jiyi \\ 
+	\textit{\begin{small}Department of Computer Science, National University of Singapore\end{small}} \\
+	\begin{small}Email: \href{mailto:stephanie\_lew@u.nus.edu}{stephanie\_lew@u.nus.edu},
+				\href{mailto:jiyizhang@u.nus.edu}{jiyizhang@u.nus.edu} \end{small}\\
+\end{center} 
 
-{\bf Keywords:} Continuous Authentication, Multi-modal biometrics
+\noindent\\
+\begin{small}{\bf Keywords:} Continuous Authentication, Biometrics, Multimodal biometrics, IoT, smarthomes\end{small}
+
 \section*{Executive Summary}
 It is well known that single sign-in solutions involving passwords and tokens are not very secure. Behavioral biometrics promises to be stronger authenticators as user behaviors can be learned from biometric features collected from embedded sensors in mobile devices. However, these methods still does not solve the single point-of-entry problem and is vulnerable to attacks. On the other hand, continuous authentication ensures that users’ identity are verified continuously and strengthens the ability of a system to lock out imposters, even when the recognition ability of a single sample is not high. The use of multi-modal biometrics such as fusing face, voice, teeth modalities, or touchscreen gestures and textual information has proven to be more effective overall authenticators as compared to a single biometric authenticator alone. Our work  tries to solve the problem of seamlessly authenticating users across multiple devices in a smart home setting by continuous authentication. We realise that the existing methods may not work in a complex setting like a smart home, where not all mobile devices are equipped with the same sensing modality. Furthermore, processing time costs increase as with the increase in the number of biometric modalities considered for continuous authentication. Thus, we propose a multi-modal continuous authentication system that is capable of fusing time-stamped information (e.g. face, voice and location) collected from devices of different common biometric sensing modalities, that is not limited by device hardware configurations. We envision that our research can open up new works for evaluating which combination of sensing modalities can be most effective for smart home use. 
 
 \section*{Introduction}
-Mobile devices are becoming an inherent part of our daily lives. Several applications in smartphones for example, provide us with the means to communicate, plan work and organize our lives. The smartphones collect and compile a growing amount of private information, to which access needs to be controlled to protect the privacy of the users. \\\\
-\noindent
-To prevent unauthorized access to private data in smartphones, smartphone manufacturers employ traditional access control mechanisms using passcode, lock pattern and fingerprint. Previous work~\cite{} has shown that these methods are limited in terms of the security, usability and cost. In response, researchers propose continuous and passive authentication as an enhancement to existing schemes~\cite{}. A continuous and passive authentication system continually senses a user’s interactions with the device and authenticates the user in runtime based on behavioral data, such as touchscreen gestures, walking gait, face and voice modalities~\cite{}. These characteristics promise to be stronger than passwords alone.\\\\
-\noindent
-Such information can be collected from different sources of context, like a device, a network, online resources or the environment, which can then be factored into an authentication decision, either as separate authentication factors or as an authentication adaptation, augmenting the decision to grant a user access to a given resource. While considering a high number of attributes for authentication would increase security and reliability, processing time cost would also increase. \cite{}suggests that any proposed solution should contain contextual attributes that do not require direct user interaction and the verification functions should work in the background without any response delay. \\\\
-\noindent
-In this project, we propose a multi-modal biometric approach toward authenticating users continuously and transparently in smart home environments.
+Mobile devices are becoming an inherent part of our daily lives. Several applications in smartphones for example, provide us with the means to communicate, plan work and organize our lives. The smartphones collect and compile a growing amount of private information, to which access needs to be controlled to protect the privacy of the users. 
+
+\noindent\\
+To prevent unauthorized access to private data in smartphones, smartphone manufacturers employ traditional access control mechanisms using passcode, lock pattern and fingerprint. Previous work ~\cite{aviv2010smudge, chin2012measuring, de2012touch} has shown that these single sign-in methods are limited in terms of the security, usability and cost. In response, researchers propose continuous and passive authentication as an enhancement to existing schemes ~\cite{frank2013touchalytics,patel2016continuous}. A continuous and passive authentication system continually senses a user’s interactions with the device and authenticates the user in runtime based on behavioral data, such as touchscreen gestures, walking gait, face and voice modalities ~\cite{meng2015surveying,stylios2016review}. These behavioral characteristics promise to be stronger authenticators than passwords alone.  Also, continuous authentication promises to verify a user’s identity continuously, strengthening the ability of the system of locking out impostors even when the recognition ability on an individual sample is not high.
+
+\noindent\\
+Such information can be collected from different sources of context, like a device, a network, online resources or the environment, which can then be factored into an authentication decision, either as separate authentication factors or as an authentication adaptation, augmenting the decision to grant a user access to a given resource. While considering a high number of attributes for authentication would increase security and reliability, processing time cost would also increase.  Ashibani et. al ~\cite{ashibani2019design} suggests that any proposed solution should contain contextual attributes that do not require direct user interaction and the verification functions should work in the background without any response delay. 
+
+\noindent\\
+In this project, we will focus on continuously authenticating users who own multiple smart home devices, using a multi-modal biometric approach. 
 
 \section*{Problem Statement}
-Our aim is to build a component-based system which combines the sensor capability and computation power of multiple different smart home devices to provide secure, robust, reliable and convenient authentication. In this system, every smart home device runs a submodule which takes in the device’s sensor input and gives a score describing the likelihood of owner presence. All the submodules connect to the core processing component through an interface. This core component constantly takes in scores from different devices and their respective timestamps to conduct real-time evaluation and produce the authentication decision. The evaluation should be done in such a way that the score itself is independent of the sampling rate and type of sensor activated at the moment of authentication. A higher sampling frequency increases the confidence of the decision while a lower sampling frequency does the opposite. Adaptive sampling is applied to maintain the confidence level above a minimum threshold while avoiding hogging the computation resources for prolonged time period.\\\\
-\noindent
+
+Our aim is to build a component-based system which combines the sensor capability and computation power of multiple different smart home devices to provide secure, robust, reliable and convenient authentication. In this system, every smart home device runs a submodule which takes in the device’s sensor input and gives a score describing the likelihood of owner presence. All the submodules connect to the core processing component through an interface. This core component constantly takes in scores from different devices and their respective timestamps to conduct real-time evaluation and produce the authentication decision. The evaluation should be done in such a way that the score itself is independent of the sampling rate and type of sensor activated at the moment of authentication. A higher sampling frequency increases the confidence of the decision while a lower sampling frequency does the opposite. Adaptive sampling is applied to maintain the confidence level above a minimum threshold while avoiding hogging the computation resources for prolonged time period.
+
+\noindent\\
 Many smart home devices like security cameras and voice assistants can be controlled through end-user devices like smartphones and tablets. Notably, current passcode-based and cryptographic-based authentication methods for such devices are neither convenient nor secure. Though biometric authentication methods such as fingerprint verification and facial verification have become more popular recently, they are often used as a simple replacement of the password authentication, which is deemed unsafe. Hence, the issue of single point of failure still remains unresolved. When a mobile device using such kind of authentication is in possession of an adversarial, the attacker will have enough time and resource to achieve partial or total break eventually, and may result in serious consequences.
 
 \section*{Related Work}
-A number of researches have upheld the need for more innovative authentication methods that aim to balance the trade-off between security and convenience. These authentication approaches commonly fall into three categories: knowledge-based, object-based and physiological.\\\\
-\noindent
-One type of knowledge-based authentication is Single sign-on, which relies on the user to provide one login credential to access many other applications~\cite{Abdulwahid2016} . This increases convenience and reduce the burden of the user having to remember many passwords. They assume that the user’s identity is legitimate throughout the access session, which is not necessarily the case (an imposter may try to use the applications after the initial login). \\\\
-\noindent
-An object-based approach can be taken to overcome the drawbacks of knowledge-based approach like passwords. For example, Token-based authentication in a form of hardware or software tokens are used for logging in to the service. A software token such as the Google Authenticator~\cite{}, installed as a software on a device, issues a new password that changes with every access time. This method removes the burden of remembering or choosing passwords.\\\\
-\noindent
-Some researchers realized the importance of continuity and context in security implementations~\cite{Nakanishi:2016:UBC:3015166.3015180, Sitara:2016:DVT:3009206.3009228,https://calhoun.nps.edu/handle/10945/1011,Janakiraman:2005:UCF:1042449.1043974,ebb6df849f174c33bc9df41b799a296d}. They proposed the idea of behavioral-based authentication. Nonetheless, the ‘side channel’ nature of behavioral based method made it inadequate to act as a strong authenticator alone. Therefore, it becomes crucial to implement a mechanism which combines weak authenticators together to provide strong authentication.
+
+A number of researches have upheld the need for more innovative authentication methods that aim to balance the trade-off between security and convenience. Current authentication approaches commonly fall into three categories: knowledge-based, object-based and behavioural-based.
+
+\noindent\\
+One type of knowledge-based authentication is Single sign-on, which relies on the user to provide one login credential to access many other applications ~\cite{al2016continuous,radha2012survey}. This increases convenience and reduce the burden of the user having to remember many passwords. They assume that the user’s identity is legitimate throughout the access session, which is not necessarily the case (an imposter may try to use the applications after the initial login).  
+
+\noindent\\
+An object-based approach can be taken to overcome the drawbacks of knowledge-based approach like passwords. For example, Token-based authentication in a form of hardware or software tokens are used for logging in to the service. A software token such as the Google Authenticator ~\cite{aloul2009two}, installed as a software on a device, issues a new password that changes with every access time. This method removes the burden of remembering or choosing passwords. Yet, user are still required to provide the generate passwords for continuous authentication. 
+ 
+ \noindent\\
+Some researchers realized the importance of continuity and context in security implementations ~\cite{Nakanishi:2016:UBC:3015166.3015180, Sitara:2016:DVT:3009206.3009228,https://calhoun.nps.edu/handle/10945/1011,Janakiraman:2005:UCF:1042449.1043974,ebb6df849f174c33bc9df41b799a296d}.
+They proposed the idea of behavioral-based authentication, where users can be identified through biometric features, such as fingerprint or facial recognition. Biometric features can be considered as robust for authentication, and require little response time. Moreover, the ‘side channel’ nature of the behavioral-based method makes it inadequate to act as a strong authenticator alone. Therefore, it becomes crucial to implement a mechanism which combines weak authenticators together to provide strong authentication. 
+
+\noindent\\
+Several studies have been conducted to study the feasibility of multimodal behavior biometric authentication system. Kim et. al ~\cite{kim2010person} proposed an enhanced multimodal personal authentication system for mobile device security,  that fuses information from face teeth and voice modalities to improve performance. They demonstrated that the error rates for the integration of three modalities were lower that the error rates regarding a single modality. Saevanee et al. ~\cite{saevanee2012multi} combined three behavioral biometric techniques based on SMS texting activities and messages, as a multi-modal biometric authentication method for mobile devices. They showed that behavior profiling, keystroke dynamics and linguistic profiling can be used to discriminate users and showed that the two fusion methods can improve the classification performance.  Shi et al. ~\cite{shi2010implicit} hypothesized that most users are habitual in nature and are prone to performing similar tasks at a certain time of the day. They collected a wide range of behavioral information such as location, communication, and usage of applications, to form a user profile. Their method identifies positive events and boosts the authentication score when a “good" or habitual event is observed. While these fusion methods show promise of a strong authenticator, it is observed the quality and type of biometric data used is still sensor-dependent. 
+
+\noindent\\
+Also, we realise that not all smart home devices (e.g. router, voice assistant, security camera) are equipped with the same biometric modality. Wang et. al ~\cite{wang2017towards} studied the problem of translating behavioral models for user authentication across multiple dissimilar mobile devices based on app-independent modalities like user clicks and swipes. In contrast, we do not attempt to bootstrap trust on newer device. We will concentrate on combining multiple biometric modalities across devices using a general continuous authentication method. We envision that the new fusion system will be sensor-independent and is able to verify users in a variety of smart home configurations.
 
 \section*{Project Plan}
 \begin{enumerate}
@@ -62,7 +88,28 @@ Apr. 14 - 21     & Prepare final report                                         
 \end{tabular}
 \end{table}
 
+\pagebreak
 \section*{Team Responsibilities}
+
+Each member will take part equally in all tasks, but one member is assigned to each task to ensure that requirements of the deliverables are met and submitted by the course deadlines. 
+\newline\\		 	 	 								 
+{\bf Project Tasks}
+\begin{enumerate}
+\item Literature Survey: Stephanie
+\item Designing data fusion system: Jiyi
+\item Analysing results: Stephanie
+\item Investigating for vulnerabilities: Jiyi 
+\item Testing possible defense: Stephanie
+\end{enumerate} 
+
+\noindent\\
+{\bf Course Deliverables}
+\begin{enumerate}
+\item Presentation: Stephanie
+\item Demo: Jiyi
+\item Poster: Stephanie
+\item Written Report: Jiyi
+\end{enumerate}
 
 \section*{Potential Risks}
 \begin{enumerate}
@@ -70,16 +117,8 @@ Apr. 14 - 21     & Prepare final report                                         
 \item We will have good amount of data for us to play around with and build the individual authenticators. However, it will be hard to collect data from actual smart home setting and test the whole system.
 \end{enumerate}
 
-
 \section*{Backup Plan}
-
-% to comment sections out, use the command \ifx and \fi. Use this technique when writing your pre lab. For example, to comment something out I would do:
-%  \ifx
-%	\begin{itemize}
-%		\item item1
-%		\item item2
-%	\end{itemize}	
-%  \fi
+As we plan our project well and divide the deliverables into several stages, we are quite safe. In the case that we are unable to solve the challenging part of the project, we can always fall back to simpler sub-problems (E.g. cross-device authentication to single-device authentication, fusion multiple biometric modalities to fusion of two major modalities). In fact, using speech recognition to achieve continuous authentication would be a novel solution to solve the authentication problem for voice assistant type of smart home devices.
 
 \addcontentsline{toc}{section}{References}
 \bibliographystyle{IEEEtran}

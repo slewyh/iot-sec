@@ -8,53 +8,49 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: sow.bib
-Warning--I didn't find a database entry for "Abdulwahid2016"
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
-Too many commas in name 1 of "Carrillo,, Cassandra, M." for entry https://calhoun.nps.edu/handle/10945/1011
-while executing---line 2403 of file IEEEtran.bst
 
 Done.
-You've used 5 entries,
+You've used 20 entries,
             4087 wiz_defined-function locations,
-            870 strings with 8733 characters,
-and the built_in function-call counts, 3966 in all, are:
-= -- 318
-> -- 70
-< -- 29
-+ -- 36
-- -- 11
-* -- 218
-:= -- 642
-add.period$ -- 13
-call.type$ -- 5
-change.case$ -- 7
-chr.to.int$ -- 69
-cite$ -- 5
-duplicate$ -- 276
-empty$ -- 335
-format.name$ -- 14
-if$ -- 895
+            956 strings with 12044 characters,
+and the built_in function-call counts, 17256 in all, are:
+= -- 1383
+> -- 414
+< -- 155
++ -- 223
+- -- 69
+* -- 865
+:= -- 2539
+add.period$ -- 50
+call.type$ -- 20
+change.case$ -- 22
+chr.to.int$ -- 360
+cite$ -- 20
+duplicate$ -- 1206
+empty$ -- 1394
+format.name$ -- 87
+if$ -- 4037
 int.to.chr$ -- 0
-int.to.str$ -- 5
-missing$ -- 50
-newline$ -- 46
-num.names$ -- 7
-pop$ -- 113
+int.to.str$ -- 20
+missing$ -- 211
+newline$ -- 91
+num.names$ -- 22
+pop$ -- 482
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 288
+skip$ -- 1303
 stack$ -- 0
-substring$ -- 165
-swap$ -- 220
-text.length$ -- 6
+substring$ -- 862
+swap$ -- 1014
+text.length$ -- 35
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 5
+type$ -- 20
 warning$ -- 0
-while$ -- 22
-width$ -- 6
-write$ -- 82
-(There was 1 error message)
+while$ -- 91
+width$ -- 22
+write$ -- 231
