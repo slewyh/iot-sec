@@ -1,4 +1,4 @@
-from pyaudio import paInt16
+# from pyaudio import paInt16
 
 # Signal processing
 SAMPLE_RATE = 16000  #Hertz
@@ -11,6 +11,7 @@ MAX_SEC = 3
 
 # Model
 WEIGHTS_FILE = "data/model/weights.h5"
+VGGM_WEIGHTS_FILE = "data/model/VGG-M_weights.h5"
 COST_METRIC = "cosine"  # euclidean or cosine
 INPUT_SHAPE=(NUM_FFT,None,1)
 

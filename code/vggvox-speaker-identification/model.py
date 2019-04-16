@@ -23,6 +23,7 @@ def eucl_dist_output_shape(shapes):
     shape1, shape2 = shapes
     return (shape1[0], 1)
 
+
 # Block of layers: Conv --> BatchNorm --> ReLU --> Pool
 def conv_bn_pool(inp_tensor,layer_idx,conv_filters,conv_kernel_size,conv_strides,conv_pad,
 	pool='',pool_size=(2, 2),pool_strides=None,
@@ -50,7 +51,6 @@ def conv_bn_dynamic_apool(inp_tensor,layer_idx,conv_filters,conv_kernel_size,con
 	return x
 
 
-# VGGVox verification model
 def vggvox_model():
 	inp = Input(c.INPUT_SHAPE,name='input')
 	x = conv_bn_pool(inp,layer_idx=1,conv_filters=96,conv_kernel_size=(7,7),conv_strides=(2,2),conv_pad=(1,1),
@@ -72,6 +72,7 @@ def vggvox_model():
 	# print("*"*10, m.input_shape)
 	return m
 
+
 def siamese_network(input_shape, model):
 
 	input_a = Input(shape=input_shape)
@@ -91,6 +92,7 @@ def siamese_network(input_shape, model):
 	model = Model([input_a, input_b], distance, name='Siamese')
 
 	return model
+
 
 def vggvox_mod_model(model):
 	for layer in model.layers[:-1]:
@@ -116,6 +118,7 @@ def vggvox_mod_model(model):
 
 	return model2
 
+
 #define step decay function
 class LossHistory_(keras.callbacks.Callback):
     def on_train_begin(self, logs={}):
@@ -127,11 +130,13 @@ class LossHistory_(keras.callbacks.Callback):
         self.lr.append(exp_decay(len(self.losses)))
         print('lr:', exp_decay(len(self.losses)))
 
+
 def exp_decay(epoch):
     initial_lrate = 1e-2
     k = 1e-8
     lrate = initial_lrate * np.exp(-k*epoch)
     return lrate
+
 
 def plot_fig(i, history):
     fig = plt.figure()
@@ -148,6 +153,7 @@ def plot_fig(i, history):
     fig.savefig('img/'+str(i)+'-accuracy.jpg')
     plt.close(fig)
 
+
 def contrastive_loss(y_true, y_pred):
     '''Contrastive loss from Hadsell-et-al.'06
     http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf
@@ -157,16 +163,19 @@ def contrastive_loss(y_true, y_pred):
     margin_square = K.square(K.maximum(margin - y_pred, 0))
     return K.mean(y_true * square_pred + (1 - y_true) * margin_square)
 
+
 def compute_accuracy(y_true, y_pred):
     '''Compute classification accuracy with a fixed threshold on distances.
     '''
     pred = y_pred.ravel() < 0.5
     return np.mean(pred == y_true)
 
+
 def accuracy(y_true, y_pred):
     '''Compute classification accuracy with a fixed threshold on distances.
     '''
     return K.mean(K.equal(y_true, K.cast(y_pred < 0.5, y_true.dtype)))
+
 
 def train_siamese(model, tr_pairs, tr_y):
 	# define SGD optimizer
@@ -196,8 +205,10 @@ def train_siamese(model, tr_pairs, tr_y):
 	
 	return model
 
+
 def top_1_categorical_accuracy(y_true, y_pred):
     return metrics.top_k_categorical_accuracy(y_true, y_pred, k=1) 
+
 
 def top_5_categorical_accuracy(y_true, y_pred):
     return metrics.top_k_categorical_accuracy(y_true, y_pred, k=5) 
@@ -209,6 +220,7 @@ def compile_model(model):
 	model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=[top_1_categorical_accuracy,top_5_categorical_accuracy])
 			
 	return model
+
 
 def train_for_classification(model, tr_X, tr_y):
 	# learning schedule callback
@@ -233,6 +245,7 @@ def train_for_classification(model, tr_X, tr_y):
 	# plot_fig(model.name, history)
 	
 	return model
+
 
 def test():
 	model = vggvox_model()
